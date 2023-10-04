@@ -19,7 +19,7 @@ export default function LoginPage() {
   const formik = useFormik({
     initialValues: LoginInitialState,
     validationSchema,
-    onSubmit: (e) => {
+    onSubmit: (values) => {
       try {
         console.log("login Clicked");
       } catch (e) {
@@ -70,7 +70,13 @@ export default function LoginPage() {
             />
           </Box>
           <Box textAlign="right">
-            <Button>Forget Password ?</Button>
+            <Button
+              onClick={() => {
+                navigate(PATH.REGISTER.OTP__FORM.ROOT);
+              }}
+            >
+              Forget Password ?
+            </Button>
           </Box>
           <Box my="30px">
             <LoadingButton disabled={!formik.dirty} variant="contained" color="primary" onClick={formik.handleSubmit}>

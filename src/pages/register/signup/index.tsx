@@ -22,7 +22,12 @@ export default function LoginPage() {
   const formik = useFormik({
     initialValues: SignupInitialState,
     validationSchema,
-    onSubmit: (e) => {
+    onSubmit: (values) => {
+      const formattedValues = {
+        ...values,
+        phoneNumber: `+977${values.phoneNumber}`,
+      };
+
       try {
         console.log("Sign up Clicked");
       } catch (e) {
